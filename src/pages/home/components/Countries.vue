@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="countries" v-for="item of search(keyword)" :key="item.id">
+    <div class="countries" v-for="item of searchOrRegion(keyword,region)" :key="item.id">
       <div class="flag">
         <img  class="flag-svg" :src="item.flag">
       </div>
@@ -31,12 +31,13 @@ export default {
   name: 'HomeCountries',
   props: {
     info: Array,
-    keyword: String
+    keyword: String,
+    region: String
   },
   methods: {
-    search (keyword) {
+    searchOrRegion (keyword,region) {
       return this.info.filter(item => {
-        if (item.name.toLowerCase().includes(keyword.toLowerCase())) {
+        if (item.name.toLowerCase().includes(keyword.toLowerCase()) && item.region.includes(region)) {
           return item
         }
       })

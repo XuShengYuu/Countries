@@ -3,8 +3,8 @@
     <home-header></home-header>
     <div class="content">
       <home-search @keyword="getKeyword"></home-search>
-      <home-region class="home-region"></home-region>
-      <home-countries class="home-countries" :info="countriesInfo" :keyword="keyword"></home-countries>
+      <home-region class="home-region" @region="getRegion"></home-region>
+      <home-countries class="home-countries" :info="countriesInfo" :keyword="keyword" :region="region"></home-countries>
     </div>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
   data () {
     return {
       countriesInfo: [],
-      keyword: ''
+      keyword: '',
+      region: ''
     }
   },
   methods:{
@@ -39,8 +40,13 @@ export default {
     },
     getKeyword (keyword) {
         this.keyword = keyword
-/*        console.log(keyword)*/
+    },
+    getRegion (region) {
+      this.region = region
+      if (this.region == 'Select an Item') {
+        this.region = ''
       }
+    }
   },
   mounted () {
     this.getCountriesInfo()

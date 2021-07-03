@@ -5,7 +5,7 @@
           :selected="object" 
           v-on:updateOption="methodToRunOnSelect" 
           :placeholder="'Select an Item'"
-          :closeOnOutsideClick="boolean">
+          :closeOnOutsideClick="true">
     </dropdown>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     name: 'HomeRegion',
     data() {
           return {
-            arrayOfObjects: [{name: 'Africa'},{name: 'America'},{name: 'Asia'},{name: 'Europe'},{name: 'Oceania'}],
+            arrayOfObjects: [{name:'Select an Item'},{name: 'Africa'},{name: 'America'},{name: 'Asia'},{name: 'Europe'},{name: 'Oceania'}],
             object: {
               name: 'Select an Item',
             }
@@ -28,6 +28,11 @@ export default {
   methods: {
     methodToRunOnSelect(payload) {
       this.object = payload;
+    }
+  },
+  watch: {
+    object () {
+      this.$emit('region',this.object.name)
     }
   }
 }
