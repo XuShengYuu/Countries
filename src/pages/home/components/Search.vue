@@ -2,7 +2,7 @@
   <div class="search">
     <span class="iconfont">
       &#xe725;
-      <input class="search-input" results="s" type="text" placeholder="Search for a country……">
+      <input v-model="keyword" class="search-input" results="s" type="text" placeholder="Search for a country……">
     </span>    
   </div>
 </template>
@@ -10,6 +10,17 @@
 <script>
 export default {
     name: 'HomeSearch',
+    data () {
+      return {
+        keyword: '',
+      }
+    },
+    watch: {
+      keyword () {
+/*        console.log(this.keyword)*/
+        this.$emit('keyword',this.keyword)
+      }
+    }
   }
 </script>
 

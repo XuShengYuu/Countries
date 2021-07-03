@@ -2,9 +2,9 @@
   <div>
     <home-header></home-header>
     <div class="content">
-      <home-search></home-search>
+      <home-search @keyword="getKeyword"></home-search>
       <home-region class="home-region"></home-region>
-      <home-countries class="home-countries" :info="countriesInfo"></home-countries>
+      <home-countries class="home-countries" :info="countriesInfo" :keyword="keyword"></home-countries>
     </div>
   </div>
 </template>
@@ -16,31 +16,36 @@ import HomeRegion from './components/Region'
 import HomeCountries from './components/Countries'
 import axios from 'axios'
 export default {
-    name: 'Home',
-    components: {
-      HomeHeader,
-      HomeSearch,
-      HomeRegion,
-      HomeCountries
-    },
-    data () {
-      return {
-        countriesInfo: []
-      }
-    },
-    methods:{
-      getCountriesInfo () {
-        axios.get('https://restcountries.eu/rest/v2/all')
-          .then(this.getCountriesInfoSucc)
-      },
-      getCountriesInfoSucc (res) {
-        this.countriesInfo = res.data
-      }
-    },
-    mounted () {
-      this.getCountriesInfo()
+  name: 'Home',
+  components: {
+    HomeHeader,
+    HomeSearch,
+    HomeRegion,
+    HomeCountries
+  },
+  data () {
+    return {
+      countriesInfo: [],
+      keyword: ''
     }
+  },
+  methods:{
+    getCountriesInfo () {
+      axios.get('https://restcountries.eu/rest/v2/all')
+        .then(this.getCountriesInfoSucc)
+    },
+    getCountriesInfoSucc (res) {
+      this.countriesInfo = res.data
+    },
+    getKeyword (keyword) {
+        this.keyword = keyword
+/*        console.log(keyword)*/
+      }
+  },
+  mounted () {
+    this.getCountriesInfo()
   }
+}
 </script>
 <style lang="stylus">
 .content

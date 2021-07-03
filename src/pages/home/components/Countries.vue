@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="countries" v-for="item of info" :key="item.id">
+    <div class="countries" v-for="item of search(keyword)" :key="item.id">
       <div class="flag">
         <img  class="flag-svg" :src="item.flag">
       </div>
@@ -28,10 +28,20 @@
 <script>
 import { number_format } from '@/filters/numbersFormat.js'
 export default {
-    name: 'HomeCountries',
-    props: {
-      info: Array
-    },
+  name: 'HomeCountries',
+  props: {
+    info: Array,
+    keyword: String
+  },
+  methods: {
+    search (keyword) {
+      return this.info.filter(item => {
+        if (item.name.toLowerCase().includes(keyword.toLowerCase())) {
+          return item
+        }
+      })
+    }
+  }
 }
 </script>
 <style lang="stylus" scoped>
