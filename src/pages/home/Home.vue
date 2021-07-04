@@ -43,7 +43,7 @@ export default {
     },
     getRegion (region) {
       this.region = region
-      if (this.region == 'Select an Item') {
+      if (this.region == 'Filter by Region') {
         this.region = ''
       }
     }

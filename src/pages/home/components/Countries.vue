@@ -46,15 +46,18 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+@import '~@/assets/styles/mixin.styl'
 .countries
   width: 265px
   height: 340px
   overflow: hidden
   border-radius: 5px
-  box-shadow: 0px 0px 10px #ccc;
+  box-shadow: 0px 0px 10px
   float: left
-  margin-right: 60px
+  margin-left: 80px
   margin-bottom: 60px
+  bg_color(elColor)
+  box_shadow(shadowColor)
   .flag
     width: 265px
     height: 160px
@@ -68,6 +71,7 @@ export default {
     height: 180px
     line-height: 20px
     padding: 0px 25px 0px 25px
+    font_color(textColor)
     .info-country
       font-size: 16px
       font-weight: 800
@@ -75,20 +79,17 @@ export default {
     .info-population
       margin-top: 15px
       font-size: 12px
-      font-weight: 600
       .population-num
         font-size: 10px
         font-weight: 300
     .info-region
       font-size: 12px
-      font-weight: 600
       .region
         font-size: 10px
         font-weight: 300
     .info-capital
       font-size: 12px
-      font-weight: 600
       .capital
-        font-size: 10px
+        font-size: 10px;
         font-weight: 300
 </style>

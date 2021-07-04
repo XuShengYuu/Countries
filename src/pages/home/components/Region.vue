@@ -16,9 +16,9 @@ export default {
     name: 'HomeRegion',
     data() {
           return {
-            arrayOfObjects: [{name:'Select an Item'},{name: 'Africa'},{name: 'America'},{name: 'Asia'},{name: 'Europe'},{name: 'Oceania'}],
+            arrayOfObjects: [{name:'Filter by Region'},{name: 'Africa'},{name: 'America'},{name: 'Asia'},{name: 'Europe'},{name: 'Oceania'}],
             object: {
-              name: 'Select an Item',
+              name: 'Filter by Region',
             }
           }
         },
@@ -41,21 +41,29 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
+@import '~@/assets/styles/mixin.styl'
+.filter
+  float: right
+  clear: right
+  margin: 0px 60px 0px 0px
 .my-dropdown-toggle
   margin-top: -60px
+  height: 45px;
   border-radius: 5px;
-  ::v-deep .dropdown-toggle 
-    color: hsl(200, 15%, 8%)
+  box-shadow: 0px 0px 10px
+  box_shadow(shadowColor)
+  ::v-deep .dropdown-toggle
     padding: 13px 20px 12px 10px;
     font-size: 14px;
-    background: none
-    min-width: 160px
-    box-shadow: 0px 0px 10px #ccc;
-  ::v-deep .dropdown-toggle-placeholder 
-    color: #c4c4c4;
-::v-deep .dropdown-menu
-  min-width: 190px;
-::v-deep .btn-group
-  height: 45px;
+    background: none;
+    bg_color(elColor)
+    font_color(textColor)
+  ::v-deep .dropdown-menu
+    min-width: 190px;
+    border:none
+    bg_color(elColor)
+  ::v-deep .dropdown-menu > li > a
+    font_color(textColor)
+  ::v-deep .dropdown-menu > li > a:hover
+    bg_color(toggleColor)
 </style>
