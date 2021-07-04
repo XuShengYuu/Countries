@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="countries" v-for="item of searchOrRegion(keyword,region)" :key="item.id">
+    <router-link tag="div" :to="'/detail/'+item.name" class="countries" v-for="item of searchOrRegion(keyword,region)" :key="item.id">
       <div class="flag">
         <img  class="flag-svg" :src="item.flag">
       </div>
@@ -21,7 +21,7 @@
           <span class="capital">{{item.capital}}</span>
         </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
