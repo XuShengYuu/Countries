@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import HomeHeader from '@/pages/home/components/Header.vue'
+import HomeHeader from '@/pages/pc//home/components/Header.vue'
 import DetailCountry from './components/Country.vue'
 import axios from 'axios'
 

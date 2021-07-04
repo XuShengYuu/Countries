@@ -45,7 +45,7 @@
       </div>
       <div class="country-border">
         <div class="country-border-title">Border Countries(Region):</div>
-        <router-link tag="div" :to="'/detail/'+ item" class="border-countries-button" v-for="item of this.bordersContries">
+        <router-link tag="div" :to="'/detail/'+ item" class="border-countries-button" v-for="item of this.bordersContries" :key="item.id">
           <span class="border-countries">{{item}}</span>
         </router-link> 
       </div>
